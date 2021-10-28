@@ -1,26 +1,60 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<div>
+  <main>
+    <h1>{{data.fqdn}}</h1>
+  </main>
+  <DomainCart headerText="Events:">
+    <DomainEvents :events="data.events" />
+  </DomainCart>
+  <DomainCart headerText="State flags:">
+    <DomainStateFlags 
+      :flags="data.state_flags.flags" 
+      :verbose="verbose"  
+    />
+  </DomainCart>
+</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import json from './assets/domain-detail.json';
+import DomainCart from './components/UI/DomainCart';
+import DomainEvents from './components/Events/DomainEvents'
+import DomainStateFlags from './components/StateFlags/DomainStateFlags';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    DomainCart,
+    DomainEvents,
+    DomainStateFlags,
+  },
+  data() {
+    return {
+      data: json,
+      verbose: false,
+    }
   }
 }
+
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  box-sizing: border-box;
 }
+
+html {
+    font-size: 62.5%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: 1.5rem;
+}
+</style>
+
+<style scoped>
+ 
 </style>
