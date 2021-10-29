@@ -1,37 +1,35 @@
 <template>
     <div class="button-wrapper">
-        <button 
+        <DomainButtonToggle 
+            @toggle-button="$emit('toggle-verbose')"
+            :show="verbose"
+            on="ON"
+            off="OFF"
+        />
+
+        <!-- <button 
             @click="$emit('toggle-verbose')" 
             :class="[verbose ? 'btn-toggle--on' : 'btn-toggle--off' ,'btn-toggle']"
-        >{{verbose ? 'OFF' : 'ON'}}</button>
+        >{{verbose ? 'OFF' : 'ON'}}</button> -->
         <label name="verbose-view">Verbose view</label> 
     </div>    
 </template>
 
 <script>
+import DomainButtonToggle from './UI/DomainButtonToggle';
+
 export default {
     name: 'DomainVerbose',
     props: {
         verbose: Boolean,
     },
+    components: {
+        DomainButtonToggle,
+    },
 }
 </script>
 
 <style scoped>
-.btn-toggle {
-    padding: .5rem 1rem;
-    border-radius: .4rem;
-    border-style: none;
-    color: rgba(255,255,255,1);
-    width: 6rem;
-    margin-right: 3rem;
-
-}
-
-.btn-toggle:hover {
-    cursor: pointer;
-}
-
 .btn-toggle--on {
     background: rgba(76, 130, 240, 1);
 }
