@@ -1,33 +1,36 @@
 <template>
     <div :class="[verbose ? 'verbose' : '']">
-        <div v-if="showDiv(blockForbiddenDeleted)"
+        <div v-if="verbose"
              class="flag-wrapper">
             <DomainStateFlag 
-                :class="[verbose ? 'forbidden' : '']" 
-                :verbose="verbose" 
                 v-for="flag in blockForbiddenDeleted" 
                 :flag="flag" 
                 :key="flag.name" 
             />
         </div>
-        <div v-if="showDiv(keptZone)"
+        <div v-if="verbose"
              class="flag-wrapper">
             <DomainStateFlag 
-                :class="[verbose ? 'zone' : '']"
-                :verbose="verbose" 
                 v-for="flag in keptZone" 
                 :flag="flag" 
                 :key="flag.name" 
             />
         </div>
-        <div v-if="showDiv(expired)"
+        <div v-if="verbose"
              class="flag-wrapper">
             <DomainStateFlag 
-                :class="[verbose ? 'expired' : '']"
-                :verbose="verbose" 
                 v-for="flag in expired" 
                 :flag="flag" 
                 :key="flag.name" 
+            />
+        </div>
+        <div v-if="!verbose"
+             class="flag-wrapper"
+        >
+            <DomainStateFlag
+                v-for="flag in active"
+                :key="flag.name"
+                :flag="flag"
             />
         </div>
     </div>
@@ -39,22 +42,16 @@ import DomainStateFlag from './DomainStateFlag';
 export default {
     name: 'DomainStateFlags',
     props: {
-        flags: Object,
+        flags: Array,
         verbose: Boolean,
+        show: Boolean,
     },   
     data() {
         return {
             blockForbiddenDeleted: [],
             keptZone: [],
             expired: [],
-        }
-    },
-    methods: {
-        showDiv(flagsArray) {
-            if(this.verbose) return true;
-            else {
-                flagsArray.every(flag => !flag.active);
-            }
+            active: [],
         }
     },
     components: {
@@ -65,7 +62,9 @@ export default {
         this.keptZone = this.flags.filter(flag => flag.description.match(/(kept in zone| kept out of zone)/));
         this.expired = this.flags.filter(flag => flag.description
         .match(/(expired|not validated|doesn't have associated nsset|expires|expiration|to be out of zone soon|will be deleted)/));
-    }
+
+        this.active = this.flags.filter(flag => flag.active);
+    },
 }
 </script>
 
@@ -76,6 +75,6 @@ export default {
         text-align: left;
     }
     .flag-wrapper {
-        padding: 1rem;
+        padding: 0 1rem;
     }
 </style>

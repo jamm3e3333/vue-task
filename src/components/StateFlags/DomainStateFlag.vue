@@ -1,5 +1,5 @@
 <template>
-    <p v-if="show" :class="[flag.active ? 'active' : 'not-active', 'flag']">
+    <p :class="[flag.active ? 'active' : 'not-active', 'flag']">
         <i :class="['fas', flag.active ? 'fa-circle-check' : 'fa-circle-xmark']"></i>
         {{flag.description}}
     </p>
@@ -10,13 +10,7 @@ export default {
     name: 'DomainStateFlag',
     props: {
         flag: Object,
-        verbose: Boolean,
     },
-    data() {
-        return {
-            show: this.verbose ? true : this.flag.active,
-        }
-    }
 }
 </script>
 

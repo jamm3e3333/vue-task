@@ -1,7 +1,9 @@
 <template>
     <div class="wrapper">
         <header class="wrapper-head" v-if="headerText">
-            {{headerText}}
+            <p class="header-text">
+                {{headerText}}
+            </p>
         </header>
         <div class="wrapper-body">
             <slot></slot>
@@ -35,5 +37,8 @@
     .wrapper-body {
         padding: 1rem .7rem;
         width: 100%;
+    }
+    .header-text {
+        margin: 0 0 0 1rem;
     }
 </style>

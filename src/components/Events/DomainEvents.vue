@@ -61,6 +61,7 @@ export default {
         font-weight: 700;
         text-align: left;
         width: 15rem;
+        margin-left: 1rem;
     }
     .event-registrar--name {
         font-weight: 700;
