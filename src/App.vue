@@ -4,8 +4,13 @@
     @toggle-menu="toggleMenuHandler"
     @toggle-user="toggleUserHandler"
     headerName="Ferda"
-    userName="Jan Musílek"
+    :userName="userName"
   />
+  <DomainUser
+    v-if="toggleUser"
+    :userName="userName"
+    :userRole="userRole"
+   />
   <DomainNavBar v-if="toggleMenu" />
   <div :class="['info-wrapper', toggleMenu ? '' : 'toggle-menu']">
     <div class="info-left">
@@ -100,6 +105,7 @@ import DomainNSSet from './components/Set/DomainNSSet';
 import DomainAuthInfo from './components/AuthInfo/DomainAuthInfo';
 import DomainHead from './components/DomainHead';
 import DomainNavBar from './components/DomainNavBar';
+import DomainUser from './components/DomainUser';
 
 export default {
   name: 'App',
@@ -114,6 +120,7 @@ export default {
     DomainAuthInfo,
     DomainHead,
     DomainNavBar,
+    DomainUser,
   },
   data() {
     return {
@@ -123,6 +130,8 @@ export default {
       showSecret: true,
       toggleMenu: true,
       toggleUser: false,
+      userName: 'Jan Musílek',
+      userRole: 'admin',
     }
   },
   methods: {
