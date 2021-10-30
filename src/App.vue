@@ -207,7 +207,7 @@ body {
    margin: 0;
  }
 
- @media (max-width: 1360px) {
+ @media (max-width: 1420px) {
   .info-wrapper {
     position: static;
   }
