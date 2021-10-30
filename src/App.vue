@@ -142,15 +142,12 @@ export default {
       this.showSecret = !this.showSecret;
     },
     toggleMenuHandler() {
-      if(!this.toggleMenu && this.toggleUser) {
+      if(this.toggleUser) {
         this.toggleUser = false;
       }
       this.toggleMenu = !this.toggleMenu;
     },
     toggleUserHandler() {
-      if(this.toggleMenu && !this.toggleUser) {
-        this.toggleMenu = false;
-      }
       this.toggleUser = !this.toggleUser;
     }
   },

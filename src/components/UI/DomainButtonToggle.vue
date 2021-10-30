@@ -2,7 +2,7 @@
     <button 
         @click="$emit('toggle-button')" 
         :class="[show ? 'btn-toggle--on' : 'btn-toggle--off' ,'btn-toggle']"
-    >{{show ? on : off}}</button>
+    >{{!show ? on : off}}</button>
 </template>
 
 <script>

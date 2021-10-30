@@ -17,9 +17,6 @@
 <script>
 export default {
     name: 'DomainNavBar',
-    props: {
-
-    }    
 }
 </script>
 

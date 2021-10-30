@@ -7,8 +7,8 @@
             <DomainButtonToggle 
                 @toggle-button="$emit('toggle-button')"
                 :show="show"
-                on="SHOW"
-                off="HIDE"
+                on="HIDE"
+                off="SHOW"
                 class="button-wrapper"
             />
             <p v-if="!show" class="secret-key">
