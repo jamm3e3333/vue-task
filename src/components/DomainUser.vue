@@ -6,7 +6,7 @@
             </p>
             <div class="user-credentials">
                 <p class="user-name--para">{{userName}}</p>
-                <p>{{userRole}}</p>
+                <p class="user-role--para">{{userRole}}</p>
             </div>
         </div>
         <div class="user-logout--wrapper">
