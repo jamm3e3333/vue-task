@@ -44,7 +44,6 @@ export default {
     props: {
         flags: Array,
         verbose: Boolean,
-        show: Boolean,
     },   
     data() {
         return {
