@@ -7,10 +7,6 @@
             off="OFF"
         />
 
-        <!-- <button 
-            @click="$emit('toggle-verbose')" 
-            :class="[verbose ? 'btn-toggle--on' : 'btn-toggle--off' ,'btn-toggle']"
-        >{{verbose ? 'OFF' : 'ON'}}</button> -->
         <label name="verbose-view">Verbose view</label> 
     </div>    
 </template>
